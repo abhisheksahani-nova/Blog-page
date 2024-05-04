@@ -201,7 +201,7 @@ export default function CreateBlogModal({ isOpen, onClose }) {
                 )}
               </div>
 
-              <button className="submit-btn" type="submit">
+              <button className="create-blog-btn" type="submit">
                 Create Blog
               </button>
             </form>

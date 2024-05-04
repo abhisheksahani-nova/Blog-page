@@ -1,5 +1,5 @@
 .App {
-  padding: 0 6rem;
+  padding: 0 96px;
 }
 
 .banner-blog-container {
@@ -38,4 +38,42 @@
   width: max-content;
   cursor: pointer;
   padding: 0;
+}
+
+.create-blog-btn {
+  width: 100px;
+  padding: 8px 4px;
+  border-radius: 4px;
+  outline: none;
+  border: 1px solid gray;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 1240px) {
+  .App {
+    padding: 0 32px;
+  }
+
+  .banner-blog-container {
+    height: max-content;
+    padding: 24px;
+  }
+
+  .banner-blog-content-container {
+    width: 60%;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .App {
+    padding: 0 16px;
+  }
+
+  .banner-blog-container {
+    padding: 20px;
+  }
+
+  .banner-blog-content-container {
+    width: 100%;
+  }
 }

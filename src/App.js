@@ -32,7 +32,9 @@ function App() {
 
       <FeaturedBlogSection />
 
-      <button onClick={() => setOpenModal(true)}>Create Blog</button>
+      <button className="create-blog-btn" onClick={() => setOpenModal(true)}>
+        Create Blog
+      </button>
 
       <CreateBlogModal isOpen={openModal} onClose={() => setOpenModal(false)} />
 
