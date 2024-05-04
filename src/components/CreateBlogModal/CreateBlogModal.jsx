@@ -5,6 +5,7 @@ import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import { useBlogContext } from "../../context/blog-context";
 import { v4 as uuidv4 } from "uuid";
+import { getCurrentDate } from "../../utils";
 
 export default function CreateBlogModal({ isOpen, onClose }) {
   const [newBlogData, setNewBlogData] = useState({
@@ -76,9 +77,19 @@ export default function CreateBlogModal({ isOpen, onClose }) {
     event.preventDefault();
 
     const isValid = checkBlogDataValidity();
+    const publishedAt = getCurrentDate();
 
     if (isValid) {
-      setBlogs((prev) => [...prev, { ...newBlogData }]);
+      setBlogs((prev) => [...prev, { ...newBlogData, publishedAt }]);
+      setNewBlogData({
+        id: uuidv4(),
+        author: "",
+        title: "",
+        content: "",
+        category: "",
+      });
+
+      onClose();
     }
   };
 
