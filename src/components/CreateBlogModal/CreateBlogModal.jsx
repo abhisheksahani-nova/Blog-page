@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import "./CreateBlogModal.css";
 import closeIcon from "../../assets/icons/close.png";
 import ReactQuill from "react-quill";
@@ -6,6 +6,8 @@ import "react-quill/dist/quill.snow.css";
 import { useBlogContext } from "../../context/blog-context";
 import { v4 as uuidv4 } from "uuid";
 import { getCurrentDate } from "../../utils";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function CreateBlogModal({ isOpen, onClose }) {
   const [newBlogData, setNewBlogData] = useState({
@@ -25,12 +27,16 @@ export default function CreateBlogModal({ isOpen, onClose }) {
 
   const { setBlogs } = useBlogContext();
 
+  const contentEditorRef = useRef(null);
+
   const checkBlogDataValidity = () => {
     const blogData = newBlogData;
-    const { author, title, content, category } = blogData;
+    const { author, title, category } = blogData;
 
-    let regex = /^[A-Za-z]+$/;
+    let regex = /^[a-zA-Z\s]+$/;
     let isValid = true;
+
+    const editorContentText = contentEditorRef.current.getEditor().getText();
 
     if (!author.trim()) {
       setErrors((errors) => ({
@@ -54,7 +60,7 @@ export default function CreateBlogModal({ isOpen, onClose }) {
       isValid = false;
     }
 
-    if (!content.trim()) {
+    if (!editorContentText.trim()) {
       setErrors((errors) => ({
         ...errors,
         content: "Content is required",
@@ -90,6 +96,7 @@ export default function CreateBlogModal({ isOpen, onClose }) {
       });
 
       onClose();
+      toast("Your blog post is live!");
     }
   };
 
@@ -143,6 +150,7 @@ export default function CreateBlogModal({ isOpen, onClose }) {
                   Content:
                 </label>
                 <ReactQuill
+                  ref={contentEditorRef}
                   theme="snow"
                   value={newBlogData.content}
                   onChange={handleContentChange}
@@ -208,6 +216,7 @@ export default function CreateBlogModal({ isOpen, onClose }) {
           </div>
         </div>
       )}
+      <ToastContainer />
     </>
   );
 }

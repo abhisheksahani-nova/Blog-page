@@ -12,6 +12,16 @@ import {
 function App() {
   const [openModal, setOpenModal] = useState(false);
 
+  const handleOpenModal = () => {
+    setOpenModal(true);
+    document.body.style.overflow = "hidden";
+  };
+
+  const handleCloseModal = () => {
+    setOpenModal(false);
+    document.body.style.overflow = "unset";
+  };
+
   return (
     <div>
       <div className="blog-page-container">
@@ -36,14 +46,11 @@ function App() {
 
         <FeaturedBlogSection />
 
-        <button className="create-blog-btn" onClick={() => setOpenModal(true)}>
+        <button className="create-blog-btn" onClick={handleOpenModal}>
           Create Blog
         </button>
 
-        <CreateBlogModal
-          isOpen={openModal}
-          onClose={() => setOpenModal(false)}
-        />
+        <CreateBlogModal isOpen={openModal} onClose={handleCloseModal} />
 
         <BlogSection />
       </div>

@@ -1,18 +1,16 @@
 import React from "react";
-import thumbnail from "../../../assets/images/typewriter-thumbnail.jpg";
 import "./FeaturedBlogCard.css";
 
-export default function FeaturedBlogCard() {
+export default function FeaturedBlogCard({ featuredBlog }) {
+  const { title, desc, category, publishedAt, thumbnail } = featuredBlog;
+
   return (
     <div className="featured-blogcard-container">
       <div className="featured-blogcard-content-container">
-        <p className="featured-blog-category">World</p>
-        <h3 className="featured-blog-title">Featured Post</h3>
-        <p className="featured-blog-date">Nov 12</p>
-        <p className="featured-blog-desc">
-          It is a long established fact that a reader will be distracted by the
-          readable content of a page when looking at its layout.
-        </p>
+        <p className="featured-blog-category"> {category} </p>
+        <h3 className="featured-blog-title"> {title} </h3>
+        <p className="featured-blog-date"> {publishedAt} </p>
+        <p className="featured-blog-desc">{desc}</p>
         <button className="featured-blog-readmore-link">
           Continue reading
         </button>
