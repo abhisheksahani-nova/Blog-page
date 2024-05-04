@@ -1,0 +1,27 @@
+.navbar-container {
+  width: 100%;
+  padding: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+  border-bottom: 1px solid lightgray;
+}
+
+.subscription-text {
+  margin: 0;
+  color: #555555;
+}
+
+.brandname {
+  margin: 0;
+  font-size: 32px;
+}
+
+.auth-btn {
+  background-color: transparent;
+  border: 1px solid #555555;
+  color: #555555;
+  padding: 4px 8px;
+  border-radius: 4px;
+}

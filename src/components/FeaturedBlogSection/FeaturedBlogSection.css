@@ -1,0 +1,7 @@
+.featured-blogs-section {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  box-sizing: border-box;
+  margin: 32px 0;
+}

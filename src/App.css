@@ -1,3 +1,41 @@
 .App {
-  text-align: center;
+  padding: 0 6rem;
+}
+
+.banner-blog-container {
+  background-color: #343a40;
+  width: 100%;
+  height: 265px;
+  padding: 32px;
+  box-sizing: border-box;
+}
+
+.banner-blog-content-container {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  width: 50%;
+}
+
+.banner-title {
+  margin: 0;
+  color: #fff;
+  font-size: 32px;
+}
+
+.banner-desc {
+  margin: 0;
+  color: #fff;
+}
+
+.banner-readmore-text {
+  margin: 0;
+  color: #fff;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  font-weight: 700;
+  width: max-content;
+  cursor: pointer;
+  padding: 0;
 }
