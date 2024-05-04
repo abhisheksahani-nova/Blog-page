@@ -80,23 +80,20 @@
   border: none !important;
 }
 
-.create-blog-btn {
-  width: 100px;
-  padding: 8px 4px;
-  border-radius: 4px;
-  outline: none;
-  border: 1px solid gray;
-}
-
 .error-message {
   color: red;
   font-size: 12px;
 }
 
+@media screen and (max-width: 1240px) {
+  .modal {
+    max-width: 95%;
+  }
+}
+
 @media screen and (max-width: 400px) {
   .modal {
     padding: 16px;
-    width: max-content;
     height: 500px;
   }
 }

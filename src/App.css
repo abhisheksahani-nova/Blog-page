@@ -1,11 +1,11 @@
-.App {
+.blog-page-container {
   padding: 0 96px;
 }
 
 .banner-blog-container {
   background-color: #343a40;
   width: 100%;
-  height: 265px;
+  height: 280px;
   padding: 32px;
   box-sizing: border-box;
 }
@@ -45,12 +45,21 @@
   padding: 8px 4px;
   border-radius: 4px;
   outline: none;
-  border: 1px solid gray;
+  background-color: lightseagreen;
+  border: 1px solid lightseagreen;
+  color: white;
   cursor: pointer;
+  box-sizing: border-box;
+}
+
+.create-blog-btn:hover {
+  border: 1px solid lightseagreen;
+  color: lightseagreen;
+  background-color: white;
 }
 
 @media screen and (max-width: 1240px) {
-  .App {
+  .blog-page-container {
     padding: 0 32px;
   }
 
@@ -65,7 +74,7 @@
 }
 
 @media screen and (max-width: 400px) {
-  .App {
+  .blog-page-container {
     padding: 0 16px;
   }
 

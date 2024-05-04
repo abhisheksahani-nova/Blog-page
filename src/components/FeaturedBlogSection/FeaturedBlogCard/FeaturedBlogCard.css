@@ -1,6 +1,6 @@
 .featured-blogcard-container {
   width: 50%;
-  height: 200px;
+  height: 230px;
   border: 1px solid lightgray;
   display: flex;
 }
@@ -57,7 +57,7 @@
 
 @media screen and (max-width: 850px) {
   .featured-blogcard-container {
-    height: 230px;
+    height: 270px;
   }
 
   .featured-blogcard-content-container {
@@ -68,6 +68,6 @@
 @media screen and (max-width: 580px) {
   .featured-blogcard-container {
     width: 100%;
-    height: 200px;
+    /* height: 200px; */
   }
 }

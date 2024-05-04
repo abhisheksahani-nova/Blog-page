@@ -1,0 +1,32 @@
+.footer-container {
+  background-color: #f0f3ff;
+  padding: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid lightgray;
+}
+
+.footer-content-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.footer-desc {
+  margin: 0 0 12px;
+}
+
+.blue-clr {
+  color: lightseagreen;
+  margin: 0;
+}
+
+.back-to-top-btn {
+  border: none;
+  cursor: pointer;
+  outline: none;
+  padding: 0;
+  color: lightseagreen;
+}
