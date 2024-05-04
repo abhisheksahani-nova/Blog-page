@@ -3,6 +3,7 @@ import "./CreateBlogModal.css";
 import closeIcon from "../../assets/icons/close.png";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
+import { useBlogContext } from "../../context/blog-context";
 import { v4 as uuidv4 } from "uuid";
 
 export default function CreateBlogModal({ isOpen, onClose }) {
@@ -14,11 +15,75 @@ export default function CreateBlogModal({ isOpen, onClose }) {
     category: "",
   });
 
+  const [errors, setErrors] = useState({
+    title: "",
+    content: "",
+    author: "",
+    category: "",
+  });
+
+  const { setBlogs } = useBlogContext();
+
+  const checkBlogDataValidity = () => {
+    const blogData = newBlogData;
+    const { author, title, content, category } = blogData;
+
+    let regex = /^[A-Za-z]+$/;
+    let isValid = true;
+
+    if (!author.trim()) {
+      setErrors((errors) => ({
+        ...errors,
+        author: "Author is required",
+      }));
+      isValid = false;
+    } else if (!regex.test(author)) {
+      setErrors((errors) => ({
+        ...errors,
+        author: "Name is invalid",
+      }));
+      isValid = false;
+    }
+
+    if (!title.trim()) {
+      setErrors((errors) => ({
+        ...errors,
+        title: "Title is required",
+      }));
+      isValid = false;
+    }
+
+    if (!content.trim()) {
+      setErrors((errors) => ({
+        ...errors,
+        content: "Content is required",
+      }));
+      isValid = false;
+    }
+
+    if (!category.trim()) {
+      setErrors((errors) => ({
+        ...errors,
+        category: "Category is required",
+      }));
+      isValid = false;
+    }
+
+    return isValid;
+  };
+
   const handleSubmit = (event) => {
     event.preventDefault();
+
+    const isValid = checkBlogDataValidity();
+
+    if (isValid) {
+      setBlogs((prev) => [...prev, { ...newBlogData }]);
+    }
   };
 
   const handleContentChange = (content) => {
+    setErrors((errors) => ({ ...errors, content: "" }));
     setNewBlogData((prev) => ({ ...prev, content: content }));
   };
 
@@ -48,13 +113,18 @@ export default function CreateBlogModal({ isOpen, onClose }) {
                   value={newBlogData.title}
                   placeholder="Enter blog title"
                   className="form-input"
-                  onChange={(event) =>
+                  onChange={(event) => {
+                    setErrors((errors) => ({ ...errors, title: "" }));
+
                     setNewBlogData((prev) => ({
                       ...prev,
                       title: event.target.value,
-                    }))
-                  }
+                    }));
+                  }}
                 />
+                {errors.title && (
+                  <span className="error-message"> {errors.title} </span>
+                )}
               </div>
 
               <div className="input-wrapper">
@@ -69,6 +139,9 @@ export default function CreateBlogModal({ isOpen, onClose }) {
                   className="content-editor"
                   placeholder="Enter blog content here..."
                 />
+                {errors.content && (
+                  <span className="error-message"> {errors.content} </span>
+                )}
               </div>
 
               <div className="input-wrapper">
@@ -81,13 +154,17 @@ export default function CreateBlogModal({ isOpen, onClose }) {
                   value={newBlogData.author}
                   placeholder="Enter author name"
                   className="form-input"
-                  onChange={(event) =>
+                  onChange={(event) => {
+                    setErrors((errors) => ({ ...errors, author: "" }));
                     setNewBlogData((prev) => ({
                       ...prev,
                       author: event.target.value,
-                    }))
-                  }
+                    }));
+                  }}
                 />
+                {errors.author && (
+                  <span className="error-message"> {errors.author} </span>
+                )}
               </div>
 
               <div className="input-wrapper">
@@ -100,13 +177,17 @@ export default function CreateBlogModal({ isOpen, onClose }) {
                   value={newBlogData.category}
                   placeholder="Enter category name"
                   className="form-input"
-                  onChange={(event) =>
+                  onChange={(event) => {
+                    setErrors((errors) => ({ ...errors, category: "" }));
                     setNewBlogData((prev) => ({
                       ...prev,
                       category: event.target.value,
-                    }))
-                  }
+                    }));
+                  }}
                 />
+                {errors.category && (
+                  <span className="error-message"> {errors.category} </span>
+                )}
               </div>
 
               <button className="submit-btn" type="submit">

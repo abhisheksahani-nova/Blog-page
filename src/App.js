@@ -4,6 +4,7 @@ import {
   Navbar,
   BlogCategoryList,
   FeaturedBlogSection,
+  BlogSection,
   CreateBlogModal,
 } from "./components/index";
 
@@ -34,6 +35,8 @@ function App() {
       <button onClick={() => setOpenModal(true)}>Create Blog</button>
 
       <CreateBlogModal isOpen={openModal} onClose={() => setOpenModal(false)} />
+
+      <BlogSection />
     </div>
   );
 }
